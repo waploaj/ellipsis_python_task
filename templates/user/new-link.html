@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="col-lg-6 offset-lg-3 mt-lg-4">
+            <div class="card">
+                <div class="card-body"  style="margin: 2px 16px; border-radius: 0 0 8px 8px;">
+                    <h3 class="text-center text-primary">{% if link != None %} Edit {% else %} New {% endif %}Short URL</h3>
+                    <div class="dropdown-divider mt-3"></div>
+                    {% for message in messages %}
+                        <div class="alert {% if message.error %}alert-danger {% elif message.success %} alert-success{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <button type="submit" name="submit" class="btn btn-primary mt-2">
+                                    {% if link != None %} Update {% else %} Generate {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

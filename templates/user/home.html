@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {% include 'nav.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mt-2" style="margin: 2px 16px; border-radius: 0 0 8px 8px;">
+                <div class="card-body" style="border-radius: 0">
+                    <h3>Active Links: </h3>
+                    <span class="badge badge-info badge-pill">{{ active }}</span>
+                    <h3>Expired Links: </h3>
+                    <span class="badge badge-danger badge-pill">{{ expired }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

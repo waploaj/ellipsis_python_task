@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-5" style="border-top-left-radius: 16px; border-top-right-radius: 16px">
+      <a class="navbar-brand" href="#">URL Shortener</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">My Links</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile/">My Profile</a>
+          </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="/logout/">Logout</a>
+              </li>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
+{% endblock %}

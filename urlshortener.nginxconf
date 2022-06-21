@@ -1,5 +1,5 @@
-upstream shortener_app_server {
-  server unix:/webapps/shortener/run/gunicorn.sock fail_timeout=0;
+upstream urlshortener_app_server {
+  server unix:/webapps/urlshortener/run/gunicorn.sock fail_timeout=0;
 }
 
 server {
@@ -8,15 +8,15 @@ server {
 
     client_max_body_size 4G;
 
-    access_log /webapps/shortener/logs/nginx-access.log;
-    error_log /webapps/shortener/logs/nginx-error.log;
+    access_log /webapps/urlshortener/logs/nginx-access.log;
+    error_log /webapps/urlshortener/logs/nginx-error.log;
 
     location /static/ {
-        alias   /webapps/shortener/staticfiles/;
+        alias   /webapps/urlshortener/staticfiles/;
     }
 
     location /media/ {
-        alias   /webapps/shortener/media/;
+        alias   /webapps/urlshortener/media/;
     }
 
     location / {
@@ -25,13 +25,13 @@ server {
         proxy_redirect off;
         proxy_set_header X-Forwarded-Proto $scheme;
         if (!-f $request_filename) {
-            proxy_pass http://shortener_api_app_server;
+            proxy_pass http://urlshortener_api_app_server;
             break;
         }
     }
 
     error_page 500 502 503 504 /500.html;
     location = /500.html {
-        root /webapps/shortener/static/;
+        root /webapps/urlshortener/static/;
     }
 }

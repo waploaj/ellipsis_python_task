@@ -1,13 +1,13 @@
 #!/bin/bash
 
-NAME="shortener"
-DJANGODIR=/webapps/shortener
+NAME="urlshortener"
+DJANGODIR=/webapps/urlshortener
 SOCKFILE=$DJANGODIR/run/gunicorn.sock
-USER=shortener
+USER=urlurlurlshortener
 GROUP=webapps
 NUM_WORKERS=3
-DJANGO_SETTINGS_MODULE=shortener.settings
-DJANGO_WSGI_MODULE=shortener.wsgi
+DJANGO_SETTINGS_MODULE=urlshortener.settings
+DJANGO_WSGI_MODULE=urlshortener.wsgi
 
 echo "Starting $NAME as `whoami`"
 
